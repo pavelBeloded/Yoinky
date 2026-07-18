@@ -1,9 +1,58 @@
-:root {
-  --font-display:
-    Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji,
-    Segoe UI Symbol, Noto Color Emoji;
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  --font-rounded: 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
-  --font-serif: Georgia, 'Times New Roman', serif;
+@import 'tailwindcss';
+@import 'uniwind';
+
+/* Design tokens — synced from claude.ai/design "Design Tokens.dc.html".
+   Re-sync manually: re-fetch that file and diff these values by hand,
+   there is no automated pull yet. */
+
+@theme {
+  /* Radii — src/design.dc.html "Радиусы" */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+
+  /* Typography scale — "Типографика". Pair with font-weight utilities:
+     font-extrabold (800) for display/title/heading, font-bold (700) for
+     button/label, font-semibold (600) for body/caption. */
+  --text-display: 40px;
+  --text-title: 28px;
+  --text-heading: 20px;
+  --text-button: 16px;
+  --text-body: 15px;
+  --text-label: 13px;
+  --text-caption: 12px;
+
+  /* Semantic accents — identical in both themes per the tokens file. */
+  --color-success: #34d399;
+  --color-warning: #ffb020;
+  --color-danger: #e01b26;
+  --color-danger-border: #ff3b44;
+  --color-danger-foreground: #ff5a62;
+
+  /* Neutrals given for only one theme in the source file — no light/dark
+     counterpart was provided, so these stay flat until design adds one. */
+  --color-background-elevated: #1a1a1a; /* dark only */
+  --color-avatar-background: #3a3630; /* dark only */
+  --color-muted: #6e6a66; /* dark only */
+  --color-muted-dim: #55524e; /* dark only */
+  --color-border: #e4e1dc; /* light only */
+  --color-surface: #f0eeea; /* light only */
+}
+
+@layer theme {
+  :root {
+    @variant dark {
+      --color-background: #000000;
+      --color-foreground: #f1eff0;
+      --color-foreground-secondary: #8a8580;
+    }
+
+    @variant light {
+      --color-background: #fafafa;
+      --color-foreground: #17151a;
+      --color-foreground-secondary: #8a857f;
+    }
+  }
 }
